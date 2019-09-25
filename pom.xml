@@ -37,7 +37,7 @@
             <artifactId>hamcrest-all</artifactId><type>jar</type>
             </dependency>
         <dependency>
-            <groupId>com.jwebmp.guicedee.servlets</groupId>
+            <groupId>com.jwebmp.jpms.guicedee.servlets</groupId>
             <artifactId>guiced-websockets</artifactId><type>jar</type>
             </dependency>
     </dependencies>
