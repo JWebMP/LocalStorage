@@ -23,10 +23,10 @@ import com.google.inject.servlet.RequestScoped;
 import com.jwebmp.core.base.ajax.AjaxCall;
 import com.jwebmp.core.base.servlets.SessionStorageProperties;
 import com.jwebmp.core.utilities.StaticStrings;
-import com.jwebmp.guicedinjection.GuiceContext;
+import com.guicedee.guicedinjection.GuiceContext;
 import com.jwebmp.interception.services.AjaxCallIntercepter;
 import com.jwebmp.interception.services.DataCallIntercepter;
-import com.jwebmp.logger.LogFactory;
+import com.guicedee.logger.LogFactory;
 
 import java.util.Map;
 import java.util.logging.Level;
