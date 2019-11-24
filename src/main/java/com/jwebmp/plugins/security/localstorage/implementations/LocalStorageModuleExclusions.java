@@ -29,7 +29,7 @@ public class LocalStorageModuleExclusions
 	public @NotNull Set<String> excludeModules()
 	{
 		Set<String> strings = new HashSet<>();
-		strings.add("com.jwebmp.websockets");
+		strings.add("com.guicedee.guicedservlets.websockets");
 		strings.add("com.jwebmp.plugins.security.localstorage");
 
 		strings.add("org.apache.commons.io");

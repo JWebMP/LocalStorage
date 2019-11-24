@@ -1,7 +1,7 @@
 package com.jwebmp.plugins.security.localstorage.implementations;
 
-import com.jwebmp.websockets.WebSocketsConfiguration;
-import com.jwebmp.websockets.services.IWebSocketAuthDataProvider;
+import com.guicedee.guicedservlets.websockets.WebSocketsConfiguration;
+import com.guicedee.guicedservlets.websockets.services.IWebSocketAuthDataProvider;
 
 import static com.jwebmp.core.utilities.StaticStrings.*;
 

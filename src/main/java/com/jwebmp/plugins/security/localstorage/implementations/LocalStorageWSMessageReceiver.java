@@ -1,24 +1,16 @@
 package com.jwebmp.plugins.security.localstorage.implementations;
 
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.google.inject.servlet.GuiceServletContextListener;
-import com.jwebmp.core.base.ajax.AjaxCall;
-import com.jwebmp.core.base.servlets.SessionStorageProperties;
-import com.jwebmp.core.utilities.StaticStrings;
-import com.guicedee.guicedinjection.GuiceContext;
+import com.guicedee.guicedservlets.websockets.GuicedWebSocket;
+import com.guicedee.guicedservlets.websockets.options.WebSocketMessageReceiver;
+import com.guicedee.guicedservlets.websockets.services.IWebSocketService;
 import com.guicedee.logger.LogFactory;
-import com.jwebmp.websockets.GuicedWebSocket;
-import com.jwebmp.websockets.options.WebSocketMessageReceiver;
-import com.jwebmp.websockets.services.IWebSocketService;
 
 import javax.websocket.Session;
-import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class LocalStorageWSMessageReceiver
-		implements IWebSocketService<LocalStorageWSMessageReceiver>
+		implements IWebSocketService
 {
 	private static final Logger log = LogFactory.getLog("LocalStorageWSReceiver");
 	private static boolean enabled = true;
