@@ -26,14 +26,14 @@
             <groupId>com.guicedee.servlets</groupId>
             <artifactId>guiced-servlets</artifactId>
             <type>jar</type>
-            <version>${project.version}</version>
+            <version>${guicedee.version}</version>
         </dependency>
 
         <dependency>
             <groupId>com.guicedee</groupId>
             <artifactId>guiced-undertow</artifactId>
             <type>jar</type>
-            <version>${project.version}</version>
+            <version>${guicedee.version}</version>
         </dependency>
 
     </dependencies>
