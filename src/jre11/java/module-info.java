@@ -18,6 +18,6 @@ module com.jwebmp.plugins.security.localstorage {
 	provides com.guicedee.guicedinjection.interfaces.IGuiceScanModuleExclusions with com.jwebmp.plugins.security.localstorage.implementations.LocalStorageModuleExclusions;
 	provides com.guicedee.guicedservlets.websockets.services.IWebSocketService with com.jwebmp.plugins.security.localstorage.implementations.LocalStorageWSMessageReceiver;
 
-	opens com.jwebmp.plugins.security.localstorage to com.jwebmp.core;
-	opens com.jwebmp.plugins.security.localstorage.implementations  to com.jwebmp.core;
+	opens com.jwebmp.plugins.security.localstorage to com.google.guice,com.jwebmp.core;
+	opens com.jwebmp.plugins.security.localstorage.implementations  to com.google.guice,com.jwebmp.core;
 }
