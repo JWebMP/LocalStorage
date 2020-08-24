@@ -49,7 +49,7 @@ public class LocalStorageWSMessageReceiver
 				{
 					String sessionKey = messageReceiver.getData()
 					                            .get("sessionid").toString();
-					LocalStorageWSMessageReceiver.log.log(Level.FINE, "Registered web socket to session - " + sessionKey);
+					LocalStorageWSMessageReceiver.log.log(Level.FINE, "Messaging web socket to session - " + sessionKey);
 					GuicedWebSocket.addToGroup(sessionKey,session);
 					GuicedWebSocket.getWebSocketSessionBindings()
 					               .put(sessionKey, session);
