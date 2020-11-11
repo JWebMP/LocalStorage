@@ -5,7 +5,7 @@ import com.guicedee.guicedservlets.websockets.options.WebSocketMessageReceiver;
 import com.guicedee.guicedservlets.websockets.services.IWebSocketService;
 import com.guicedee.logger.LogFactory;
 
-import javax.websocket.Session;
+import jakarta.websocket.Session;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 

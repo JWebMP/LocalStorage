@@ -8,7 +8,7 @@ module com.jwebmp.plugins.security.localstorage {
 	requires com.guicedee.guicedinjection;
 	requires com.jwebmp.interception;
 	requires com.guicedee.guicedservlets.websockets;
-	requires javax.websocket.api;
+	requires jakarta.websocket.api;
 
 	provides com.jwebmp.interception.services.DataCallIntercepter with com.jwebmp.plugins.security.localstorage.implementations.LocalStorageIntercepter;
 	provides com.jwebmp.interception.services.AjaxCallIntercepter with com.jwebmp.plugins.security.localstorage.implementations.LocalStorageIntercepter;

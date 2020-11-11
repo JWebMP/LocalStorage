@@ -4,7 +4,7 @@ import com.google.inject.Singleton;
 import com.jwebmp.core.Page;
 import com.jwebmp.core.services.IPageConfigurator;
 
-import javax.validation.constraints.NotNull;
+import jakarta.validation.constraints.NotNull;
 
 import static com.jwebmp.plugins.security.localstorage.enumerations.LocalStorageReferencePool.*;
 

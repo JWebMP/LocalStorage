@@ -4,7 +4,7 @@ import com.jwebmp.core.Event;
 import com.jwebmp.core.events.IEventConfigurator;
 import com.jwebmp.core.utilities.StaticStrings;
 
-import javax.validation.constraints.NotNull;
+import jakarta.validation.constraints.NotNull;
 
 public class LocalStorageEventConfigurator implements IEventConfigurator<LocalStorageEventConfigurator>
 {
