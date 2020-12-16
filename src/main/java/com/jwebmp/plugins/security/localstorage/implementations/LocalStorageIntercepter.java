@@ -50,6 +50,7 @@ public class LocalStorageIntercepter
 			if (call.getVariable(StaticStrings.LOCAL_STORAGE_VARIABLE_KEY) != null && !localStorage.containsKey(StaticStrings.LOCAL_STORAGE_PARAMETER_KEY))
 			{
 				ObjectMapper mapper = GuiceContext.get(ObjectMapper.class);
+				@SuppressWarnings("Convert2Diamond")
 				Map<String, String> result = mapper.readValue(call.getVariable(StaticStrings.LOCAL_STORAGE_VARIABLE_KEY)
 				                                                  .getVariableText(), new TypeReference<Map<String, String>>() {});
 				localStorage.put(StaticStrings.LOCAL_STORAGE_PARAMETER_KEY, result.get(StaticStrings.LOCAL_STORAGE_PARAMETER_KEY));
