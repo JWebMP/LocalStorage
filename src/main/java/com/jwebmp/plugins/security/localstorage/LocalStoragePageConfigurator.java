@@ -58,6 +58,7 @@ public class LocalStoragePageConfigurator
 	 * If this page should be rendered with dynamic local storage support
 	 *
 	 * @return
+	 *
 	 */
 	public boolean isLocalStorage()
 	{
