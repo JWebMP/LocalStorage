@@ -57,11 +57,12 @@ public class LocalStorageWSMessageReceiver
 					{
 						String sessionKey = messageReceiver.getData()
 						                                   .get(LOCAL_STORAGE_PARAMETER_KEY).toString();
-						LocalStorageWSMessageReceiver.log.log(Level.FINER, "Messaging web socket to local storage - " + LOCAL_STORAGE_PARAMETER_KEY);
+						LocalStorageWSMessageReceiver.log.log(Level.FINER, "Web socket local storage - " + LOCAL_STORAGE_PARAMETER_KEY);
 						messageReceiver.setBroadcastGroup(sessionKey);
 						GuicedWebSocket.addToGroup(sessionKey,session);
 						GuicedWebSocket.getWebSocketSessionBindings()
 						               .put(LOCAL_STORAGE_PARAMETER_KEY, session);
+						GuicedWebSocket.addWebsocketProperty(session,LOCAL_STORAGE_PARAMETER_KEY,sessionKey);
 					}
 					else {
 						String sessionUUID = UUID.randomUUID()
@@ -74,6 +75,7 @@ public class LocalStorageWSMessageReceiver
 						               .put(sessionUUID, session);
 						GuicedWebSocket.broadcastMessage(sessionUUID, newKey.toString());
 						messageReceiver.setBroadcastGroup(sessionUUID);
+						GuicedWebSocket.addWebsocketProperty(session,LOCAL_STORAGE_PARAMETER_KEY,sessionUUID);
 					}
 				}
 				catch (Exception e)
