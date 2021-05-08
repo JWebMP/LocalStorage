@@ -11,7 +11,7 @@ public class LocalStorageEventConfigurator implements IEventConfigurator<LocalSt
 	@Override
 	public @NotNull Event<?, ?> configureEvent(Event event)
 	{
-		event.returnVariable(StaticStrings.LOCAL_STORAGE_VARIABLE_KEY);
+		event.returnVariable("localstorage");
 		return event;
 	}
 }

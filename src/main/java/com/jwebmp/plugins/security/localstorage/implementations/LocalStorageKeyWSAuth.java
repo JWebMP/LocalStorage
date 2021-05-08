@@ -11,10 +11,13 @@ public class LocalStorageKeyWSAuth
 	@Override
 	public StringBuilder getJavascriptToPopulate()
 	{
-		return new StringBuilder("jw.websocket.newMessage('LocalStorage'," +
-		                         "{'jwamsmk':jw.localstorage['jwamsmk']}" +
+		StringBuilder sb = new StringBuilder();
+		sb.append("jw.env.scope.localstorage = jw.localstorage;\n");
+		sb.append("jw.websocket.newMessage('LocalStorage'," +
+		                         "{'jwamsmk':jw.localstorage['jwamsmk'],'headers':jw.headers}" +
 		                         ");"
 		);
+		return sb;
 	}
 
 	@Override
