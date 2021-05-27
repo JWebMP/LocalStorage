@@ -75,10 +75,12 @@ public class LocalStorageWSMessageReceiver
 				AjaxResponse<?> newKey = new AjaxResponse<>();
 				newKey.getLocalStorage()
 				      .put(LOCAL_STORAGE_PARAMETER_KEY, sessionUUID);
+				newKey.preConfigure();
 				GuicedWebSocket.addToGroup(sessionUUID, session);
 				GuicedWebSocket.getWebSocketSessionBindings()
 				               .put(sessionUUID, session);
 				GuicedWebSocket.broadcastMessage(sessionUUID, newKey.toString());
+				
 				messageReceiver.setBroadcastGroup(sessionUUID);
 				GuicedWebSocket.addWebsocketProperty(session,LOCAL_STORAGE_PARAMETER_KEY,sessionUUID);
 			}
