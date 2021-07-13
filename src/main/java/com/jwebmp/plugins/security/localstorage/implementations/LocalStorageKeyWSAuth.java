@@ -23,7 +23,7 @@ public class LocalStorageKeyWSAuth
 	@Override
 	public String name()
 	{
-		return "LocalStorageWS";
+		return "LocalStorageWSAuth";
 	}
 
 	@Override
