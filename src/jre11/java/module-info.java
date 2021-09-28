@@ -20,6 +20,7 @@ module com.jwebmp.plugins.security.localstorage {
 	//provides com.guicedee.guicedservlets.websockets.services.IWebSocketService with com.jwebmp.plugins.security.localstorage.implementations.LocalStorageWSMessageReceiver;
 	//provides com.guicedee.guicedinjection.interfaces.IGuiceScanModuleInclusions with LocalStorageInclusionModule;
 
+	provides com.guicedee.guicedinjection.interfaces.IGuiceModule with com.jwebmp.plugins.security.localstorage.implementations.LocalStorageSecurityBinder;
 	
 	exports com.jwebmp.plugins.security.localstorage;
 	opens com.jwebmp.plugins.security.localstorage to com.google.guice,com.jwebmp.core;
