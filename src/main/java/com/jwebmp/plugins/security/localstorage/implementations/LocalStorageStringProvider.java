@@ -6,16 +6,36 @@ import com.jwebmp.core.base.ajax.AjaxCall;
 
 import java.util.UUID;
 
+import static com.jwebmp.core.utilities.StaticStrings.*;
+
 public class LocalStorageStringProvider implements Provider<String>
 {
 	@Override
 	public String get()
 	{
 		AjaxCall<?> call = GuiceContext.get(AjaxCall.class);
+		com.jwebmp.core.base.ajax.AjaxResponse<?> response = GuiceContext.get(com.jwebmp.core.base.ajax.AjaxResponse.class);
+		UUID uuid = null;
 		if(call.getLocalStorage().isEmpty())
-			return UUID.randomUUID().toString();
+			uuid = UUID.randomUUID();
 		
-		return call.getLocalStorage().get("jwamsmk");
+		
+		if (call.getSessionStorage()
+		        .containsKey(LOCAL_STORAGE_PARAMETER_KEY))
+		{
+			return call.getSessionStorage()
+			           .get(LOCAL_STORAGE_PARAMETER_KEY);
+		}
+		if (uuid == null)
+		{
+			uuid = UUID.randomUUID();
+		}
+		call.getSessionStorage()
+		    .put(LOCAL_STORAGE_PARAMETER_KEY, uuid.toString());
+		response.getSessionStorage()
+		        .put(LOCAL_STORAGE_PARAMETER_KEY, uuid.toString());
+		
+		return uuid.toString();
 	}
 	
 }
