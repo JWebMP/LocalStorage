@@ -26,13 +26,11 @@
         <dependency>
             <groupId>com.guicedee.servlets</groupId>
             <artifactId>guiced-servlets</artifactId>
-            <version>${project.version}</version>
         </dependency>
 
         <dependency>
             <groupId>com.guicedee.servlets</groupId>
             <artifactId>guiced-undertow</artifactId>
-            <version>${project.version}</version>
         </dependency>
 
     </dependencies>
