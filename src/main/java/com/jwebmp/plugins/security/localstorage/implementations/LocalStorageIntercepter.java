@@ -42,7 +42,7 @@ public class LocalStorageIntercepter
 	@Override
 	public void intercept(AjaxCall<?> call, AjaxResponse<?> response)
 	{
-		try
+		/*try
 		{
 			Map<String, String> localStorage = call.getLocalStorage();
 			if (call.getVariable(StaticStrings.LOCAL_STORAGE_VARIABLE_KEY) != null && !localStorage.containsKey(StaticStrings.LOCAL_STORAGE_PARAMETER_KEY))
@@ -59,7 +59,7 @@ public class LocalStorageIntercepter
 		catch (Exception e)
 		{
 			LocalStorageIntercepter.log.log(Level.WARNING, "Unable to check for local storage key", e);
-		}
+		}*/
 	}
 	
 	@Override
