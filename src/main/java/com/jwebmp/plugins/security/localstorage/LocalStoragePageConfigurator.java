@@ -16,7 +16,7 @@ import static com.jwebmp.plugins.security.localstorage.enumerations.LocalStorage
 		pluginDescription = "Provides access to read and write into the local storage of a browser.",
 		pluginVersion = "1.0",
 		pluginDependancyUniqueIDs = "jquery",
-		pluginCategories = "storage,cookies,local-storage",
+		pluginCategories = "storage,cookies,localstorage,security",
 		pluginSubtitle = "Local Storage Service ",
 		pluginGitUrl = "https://github.com/GedMarc/JWebMP-LocalStorageSecurity",
 		pluginSourceUrl = "https://github.com/GedMarc/JWebMP-LocalStorageSecurity",
@@ -25,7 +25,7 @@ import static com.jwebmp.plugins.security.localstorage.enumerations.LocalStorage
 		pluginDownloadUrl = "https://mvnrepository.com/artifact/com.jwebmp.plugins.security/jwebmp-plugins-local-storage-security",
 		pluginIconUrl = "",
 		pluginIconImageUrl = "",
-		pluginLastUpdatedDate = "2020/12/14",
+		pluginLastUpdatedDate = "2022/03/07",
 		pluginGroupId = "com.jwebmp.plugins.security",
 		pluginArtifactId = "jwebmp-plugins-local-storage-security",
 		pluginModuleName = "com.jwebmp.plugins.security.localstorage",
@@ -42,8 +42,8 @@ public class LocalStoragePageConfigurator
 	@Override
 	public @NotNull Page<?> configure(Page<?> page)
 	{
-		page.getBody()
-		    .addJavaScriptReference(PersistJS.getJavaScriptReference());
+	//	page.getBody()
+	//	    .addJavaScriptReference(PersistJS.getJavaScriptReference());
 		return page;
 	}
 

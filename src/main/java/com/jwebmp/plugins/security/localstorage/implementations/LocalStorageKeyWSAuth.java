@@ -1,9 +1,6 @@
 package com.jwebmp.plugins.security.localstorage.implementations;
 
-import com.guicedee.guicedservlets.websockets.WebSocketsConfiguration;
-import com.guicedee.guicedservlets.websockets.services.IWebSocketAuthDataProvider;
-
-import static com.jwebmp.core.utilities.StaticStrings.*;
+import com.guicedee.guicedservlets.websockets.services.*;
 
 public class LocalStorageKeyWSAuth
 		implements IWebSocketAuthDataProvider<LocalStorageKeyWSAuth>
@@ -12,20 +9,17 @@ public class LocalStorageKeyWSAuth
 	public StringBuilder getJavascriptToPopulate()
 	{
 		StringBuilder sb = new StringBuilder();
-		sb.append("jw.env.scope.localstorage = jw.localstorage;\n");
-		sb.append("jw.websocket.newMessage('LocalStorage'," +
-		                         "{'jwamsmk':jw.localstorage['jwamsmk'],'headers':jw.headers}" +
-		                         ");"
-		);
+		//sb.append("alert('sending local storage');" +
+		sb.append("this.send('LocalStorage',{},'localStorage');");
 		return sb;
 	}
-
+	
 	@Override
 	public String name()
 	{
 		return "LocalStorageWSAuth";
 	}
-
+	
 	@Override
 	public boolean enabled()
 	{

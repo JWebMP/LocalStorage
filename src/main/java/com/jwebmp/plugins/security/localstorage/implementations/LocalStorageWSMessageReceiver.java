@@ -1,47 +1,43 @@
 package com.jwebmp.plugins.security.localstorage.implementations;
 
-import com.guicedee.guicedservlets.websockets.GuicedWebSocket;
-import com.guicedee.guicedservlets.websockets.options.WebSocketMessageReceiver;
-import com.guicedee.guicedservlets.websockets.services.IWebSocketMessageReceiver;
-import com.guicedee.guicedservlets.websockets.services.IWebSocketService;
-import com.guicedee.logger.LogFactory;
-
-import com.jwebmp.core.base.ajax.AjaxResponse;
-import com.jwebmp.core.utilities.StaticStrings;
-import jakarta.websocket.Session;
+import com.guicedee.guicedservlets.websockets.*;
+import com.guicedee.guicedservlets.websockets.options.*;
+import com.guicedee.guicedservlets.websockets.services.*;
+import com.guicedee.logger.*;
+import com.jwebmp.core.base.ajax.*;
+import jakarta.websocket.*;
 
 import java.util.*;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.util.logging.*;
 
-import static com.jwebmp.core.utilities.StaticStrings.LOCAL_STORAGE_PARAMETER_KEY;
+import static com.jwebmp.core.utilities.StaticStrings.*;
 
 public class LocalStorageWSMessageReceiver
 		implements IWebSocketMessageReceiver
 {
 	private static final Logger log = LogFactory.getLog("LocalStorageWSReceiver");
 	private static boolean enabled = true;
-
+	
 	public static boolean isEnabled()
 	{
 		return enabled;
 	}
-
+	
 	public static void setEnabled(boolean enabled)
 	{
 		LocalStorageWSMessageReceiver.enabled = enabled;
 	}
-
-//	@Override
+	
+	//	@Override
 	public void onOpen(Session session, GuicedWebSocket socket)
 	{
-
+	
 	}
-
-//	@Override
+	
+	//	@Override
 	public void onClose(Session session, GuicedWebSocket socket)
 	{
-
+	
 	}
 	
 	@Override
@@ -58,18 +54,20 @@ public class LocalStorageWSMessageReceiver
 		try
 		{
 			Session session = messageReceiver.getSession();
-			if(messageReceiver.getData() != null && messageReceiver.getData().get(LOCAL_STORAGE_PARAMETER_KEY) != null)
+			Map<String, Object> map = messageReceiver.getMap("localStorage");
+			if (map.containsKey(LOCAL_STORAGE_PARAMETER_KEY))
 			{
-				String sessionKey = messageReceiver.getData()
-				                                   .get(LOCAL_STORAGE_PARAMETER_KEY).toString();
+				String sessionKey = map.get(LOCAL_STORAGE_PARAMETER_KEY)
+				                       .toString();
 				LocalStorageWSMessageReceiver.log.log(Level.FINER, "Web socket local storage - " + LOCAL_STORAGE_PARAMETER_KEY);
 				messageReceiver.setBroadcastGroup(sessionKey);
-				GuicedWebSocket.addToGroup(sessionKey,session);
+				GuicedWebSocket.addToGroup(sessionKey, session);
 				GuicedWebSocket.getWebSocketSessionBindings()
 				               .put(LOCAL_STORAGE_PARAMETER_KEY, session);
-				GuicedWebSocket.addWebsocketProperty(session,LOCAL_STORAGE_PARAMETER_KEY,sessionKey);
+				GuicedWebSocket.addWebsocketProperty(session, LOCAL_STORAGE_PARAMETER_KEY, sessionKey);
 			}
-			else {
+			else
+			{
 				String sessionUUID = UUID.randomUUID()
 				                         .toString();
 				AjaxResponse<?> newKey = new AjaxResponse<>();
@@ -80,9 +78,8 @@ public class LocalStorageWSMessageReceiver
 				GuicedWebSocket.getWebSocketSessionBindings()
 				               .put(sessionUUID, session);
 				GuicedWebSocket.broadcastMessage(sessionUUID, newKey.toString());
-				
 				messageReceiver.setBroadcastGroup(sessionUUID);
-				GuicedWebSocket.addWebsocketProperty(session,LOCAL_STORAGE_PARAMETER_KEY,sessionUUID);
+				GuicedWebSocket.addWebsocketProperty(session, LOCAL_STORAGE_PARAMETER_KEY, sessionUUID);
 			}
 		}
 		catch (Exception e)
@@ -91,13 +88,13 @@ public class LocalStorageWSMessageReceiver
 		}
 	}
 	
-
+	
 	//@Override
 	public void onError(Throwable t, GuicedWebSocket socket)
 	{
-
+	
 	}
-
+	
 	//@Override
 	public boolean enabled()
 	{
