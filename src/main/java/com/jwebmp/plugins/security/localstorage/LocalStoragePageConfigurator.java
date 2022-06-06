@@ -2,7 +2,7 @@ package com.jwebmp.plugins.security.localstorage;
 
 import com.google.inject.*;
 import com.jwebmp.core.*;
-import com.jwebmp.core.base.angular.services.annotations.structures.*;
+import com.jwebmp.core.base.angular.client.annotations.boot.*;
 import com.jwebmp.core.plugins.*;
 import com.jwebmp.core.services.*;
 import jakarta.validation.constraints.*;
