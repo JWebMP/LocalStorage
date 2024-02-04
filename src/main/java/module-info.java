@@ -1,10 +1,13 @@
-import com.jwebmp.plugins.security.localstorage.implementations.LocalStorageInclusionModule ;
+import com.jwebmp.plugins.security.localstorage.implementations.LocalStorageInclusionModule;
 
 module com.jwebmp.plugins.security.localstorage {
 	requires transitive com.jwebmp.core.angular;
 	
 	requires com.guicedee.guicedservlets.websockets;
-	requires jakarta.websocket.api;
+	requires jakarta.websocket;
+	requires jakarta.websocket.client;
+	
+	requires static lombok;
 	
 	provides com.jwebmp.core.services.IPageConfigurator with com.jwebmp.plugins.security.localstorage.LocalStoragePageConfigurator;
 	provides com.guicedee.guicedservlets.websockets.services.IWebSocketMessageReceiver with com.jwebmp.plugins.security.localstorage.implementations.LocalStorageWSMessageReceiver;

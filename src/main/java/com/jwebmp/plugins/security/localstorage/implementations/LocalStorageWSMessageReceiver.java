@@ -1,21 +1,24 @@
 package com.jwebmp.plugins.security.localstorage.implementations;
 
-import com.guicedee.guicedservlets.websockets.*;
-import com.guicedee.guicedservlets.websockets.options.*;
-import com.guicedee.guicedservlets.websockets.services.*;
-import com.guicedee.logger.*;
-import com.jwebmp.core.base.ajax.*;
-import jakarta.websocket.*;
+import com.guicedee.guicedservlets.websockets.GuicedWebSocket;
+import com.guicedee.guicedservlets.websockets.options.WebSocketMessageReceiver;
+import com.guicedee.guicedservlets.websockets.services.IWebSocketMessageReceiver;
+import com.jwebmp.core.base.ajax.AjaxResponse;
+import jakarta.websocket.Session;
+import lombok.extern.java.Log;
 
-import java.util.*;
-import java.util.logging.*;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
+import java.util.UUID;
+import java.util.logging.Level;
 
-import static com.jwebmp.core.utilities.StaticStrings.*;
+import static com.jwebmp.core.utilities.StaticStrings.LOCAL_STORAGE_PARAMETER_KEY;
 
+@Log
 public class LocalStorageWSMessageReceiver
 		implements IWebSocketMessageReceiver
 {
-	private static final Logger log = LogFactory.getLog("LocalStorageWSReceiver");
 	private static boolean enabled = true;
 	
 	public static boolean isEnabled()
@@ -54,7 +57,7 @@ public class LocalStorageWSMessageReceiver
 		try
 		{
 			Session session = messageReceiver.getSession();
-			Map<String, Object> map = messageReceiver.getMap("localStorage");
+			Map<String, Object> map = messageReceiver.getData();
 			if (map.containsKey(LOCAL_STORAGE_PARAMETER_KEY))
 			{
 				String sessionKey = map.get(LOCAL_STORAGE_PARAMETER_KEY)
