@@ -58,32 +58,39 @@ public class LocalStorageWSMessageReceiver
 		{
 			Session session = messageReceiver.getSession();
 			Map<String, Object> map = messageReceiver.getData();
-			if (map.containsKey(LOCAL_STORAGE_PARAMETER_KEY))
+			boolean found = false;
+			if(map.containsKey("localStorage"))
 			{
-				String sessionKey = map.get(LOCAL_STORAGE_PARAMETER_KEY)
-				                       .toString();
-				LocalStorageWSMessageReceiver.log.log(Level.FINER, "Web socket local storage - " + LOCAL_STORAGE_PARAMETER_KEY);
-				messageReceiver.setBroadcastGroup(sessionKey);
-				GuicedWebSocket.addToGroup(sessionKey, session);
-				GuicedWebSocket.getWebSocketSessionBindings()
-				               .put(LOCAL_STORAGE_PARAMETER_KEY, session);
-				GuicedWebSocket.addWebsocketProperty(session, LOCAL_STORAGE_PARAMETER_KEY, sessionKey);
+				Map<String, Object> localStorage = (Map<String, Object>) map.get("localStorage");
+				if (localStorage.containsKey(LOCAL_STORAGE_PARAMETER_KEY))
+				{
+					found = true;
+					String sessionKey = localStorage.get(LOCAL_STORAGE_PARAMETER_KEY)
+									.toString();
+					LocalStorageWSMessageReceiver.log.log(Level.FINER, "Web socket local storage - " + LOCAL_STORAGE_PARAMETER_KEY);
+					messageReceiver.setBroadcastGroup(sessionKey);
+					GuicedWebSocket.addToGroup(sessionKey, session);
+					GuicedWebSocket.getWebSocketSessionBindings()
+									.put(LOCAL_STORAGE_PARAMETER_KEY, session);
+					GuicedWebSocket.addWebsocketProperty(session, LOCAL_STORAGE_PARAMETER_KEY, sessionKey);
+				}
 			}
-			else
+			if (!found)
 			{
 				String sessionUUID = UUID.randomUUID()
-				                         .toString();
+								.toString();
 				AjaxResponse<?> newKey = new AjaxResponse<>();
 				newKey.getLocalStorage()
-				      .put(LOCAL_STORAGE_PARAMETER_KEY, sessionUUID);
+								.put(LOCAL_STORAGE_PARAMETER_KEY, sessionUUID);
 				newKey.preConfigure();
 				GuicedWebSocket.addToGroup(sessionUUID, session);
 				GuicedWebSocket.getWebSocketSessionBindings()
-				               .put(sessionUUID, session);
+								.put(sessionUUID, session);
 				GuicedWebSocket.broadcastMessage(sessionUUID, newKey.toString());
 				messageReceiver.setBroadcastGroup(sessionUUID);
 				GuicedWebSocket.addWebsocketProperty(session, LOCAL_STORAGE_PARAMETER_KEY, sessionUUID);
 			}
+			
 		}
 		catch (Exception e)
 		{
