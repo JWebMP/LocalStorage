@@ -4,11 +4,9 @@ module com.jwebmp.plugins.security.localstorage {
 
     requires com.jwebmp.core.base.angular.client;
     requires com.jwebmp.client;
-    requires com.jwebmp.core;
+    //requires com.jwebmp.core;
 
-    requires com.guicedee.guicedservlets.websockets;
-    requires jakarta.websocket;
-    requires jakarta.websocket.client;
+    requires guiced.vertx.sockets;
 
     requires static lombok;
 

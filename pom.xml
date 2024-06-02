@@ -18,19 +18,15 @@
     </description>
 
     <dependencies>
+
         <dependency>
-            <groupId>com.jwebmp.core</groupId>
-            <artifactId>jwebmp-core</artifactId>
+            <groupId>com.jwebmp.client</groupId>
+            <artifactId>jwebmp-client</artifactId>
         </dependency>
 
         <dependency>
             <groupId>com.guicedee.servlets</groupId>
-            <artifactId>guiced-servlets</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>com.guicedee.servlets</groupId>
-            <artifactId>guiced-undertow</artifactId>
+            <artifactId>guiced-vertx-sockets</artifactId>
         </dependency>
 
         <dependency>

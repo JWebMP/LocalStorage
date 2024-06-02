@@ -1,14 +1,14 @@
 package com.jwebmp.plugins.security.localstorage.implementations;
 
-import com.google.inject.*;
-
+import com.google.inject.Provider;
 import com.guicedee.client.IGuiceContext;
-import com.guicedee.guicedservlets.websockets.*;
-import com.jwebmp.core.base.ajax.*;
+import com.guicedee.guicedservlets.websockets.options.CallScopeProperties;
+import com.guicedee.guicedservlets.websockets.options.CallScopeSource;
+import com.jwebmp.core.base.ajax.AjaxCall;
 
-import java.util.*;
+import java.util.UUID;
 
-import static com.jwebmp.core.utilities.StaticStrings.*;
+import static com.jwebmp.interception.services.StaticStrings.LOCAL_STORAGE_PARAMETER_KEY;
 
 public class LocalStorageStringProvider implements Provider<String>
 {
@@ -31,13 +31,15 @@ public class LocalStorageStringProvider implements Provider<String>
                        .get(LOCAL_STORAGE_PARAMETER_KEY);
         }
 
-        if (call.isWebSocketCall())
+        CallScopeProperties callScopeProperties = IGuiceContext.get(CallScopeProperties.class);
+        if (callScopeProperties.getSource() == CallScopeSource.WebSocket)
         {
-            var websocket = call.getWebsocketSession();
-            if (GuicedWebSocket.hasProperty(websocket, LOCAL_STORAGE_PARAMETER_KEY))
+            if (callScopeProperties.getProperties()
+                                   .containsKey(LOCAL_STORAGE_PARAMETER_KEY))
             {
-                return GuicedWebSocket.getPropertyMap(websocket)
-                                      .get(LOCAL_STORAGE_PARAMETER_KEY);
+                return callScopeProperties.getProperties()
+                                          .get(LOCAL_STORAGE_PARAMETER_KEY)
+                                          .toString();
             }
         }
 
