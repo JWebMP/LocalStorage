@@ -74,7 +74,7 @@ public class LocalStorageWSMessageReceiver
                 AjaxResponse<?> newKey = new AjaxResponse<>();
                 newKey.getLocalStorage()
                       .put(LOCAL_STORAGE_PARAMETER_KEY, sessionUUID);
-                newKey.preConfigure();
+                //   newKey.preConfigure();
                 callScopeProperties.getProperties()
                                    .put(LOCAL_STORAGE_PARAMETER_KEY, sessionUUID);
                 socket.addToGroup(sessionUUID);
