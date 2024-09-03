@@ -10,11 +10,11 @@ module com.jwebmp.plugins.security.localstorage {
 
     requires static lombok;
 
-    provides com.jwebmp.core.services.IPageConfigurator with LocalStoragePageConfigurator;
-    provides com.guicedee.guicedservlets.websockets.services.IWebSocketMessageReceiver with LocalStorageWSMessageReceiver;
+    provides com.jwebmp.core.services.IPageConfigurator with com.jwebmp.plugins.security.localstorage.LocalStoragePageConfigurator;
+    provides com.guicedee.guicedservlets.websockets.services.IWebSocketMessageReceiver with com.jwebmp.plugins.security.localstorage.implementations.LocalStorageWSMessageReceiver;
     provides com.guicedee.guicedinjection.interfaces.IGuiceScanModuleInclusions with LocalStorageInclusionModule;
 
-    provides com.guicedee.guicedinjection.interfaces.IGuiceModule with LocalStorageSecurityBinder;
+    provides com.guicedee.guicedinjection.interfaces.IGuiceModule with com.jwebmp.plugins.security.localstorage.implementations.LocalStorageSecurityBinder;
     provides AjaxCallIntercepter with LocalStorageInterceptor;
 
     exports com.jwebmp.plugins.security.localstorage;

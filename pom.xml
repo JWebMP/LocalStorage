@@ -33,12 +33,17 @@
             <groupId>com.jwebmp.plugins</groupId>
             <artifactId>typescript-client</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.jwebmp.core</groupId>
+            <artifactId>jwebmp-core</artifactId>
+        </dependency>
 
     </dependencies>
 
     <properties>
-        <ignore.moditect>true</ignore.moditect>
+        <ignore.moditect>false</ignore.moditect>
         <project.scm.nameUrl>/JWebMP/Plugins/LocalStorage</project.scm.nameUrl>
+
     </properties>
 
     <dependencyManagement>
@@ -72,6 +77,10 @@
 
     <build>
         <plugins>
+            <plugin>
+                <groupId>org.moditect</groupId>
+                <artifactId>moditect-maven-plugin</artifactId>
+            </plugin>
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>flatten-maven-plugin</artifactId>
