@@ -1,4 +1,6 @@
 import com.jwebmp.interception.services.AjaxCallIntercepter;
+import com.jwebmp.plugins.security.localstorage.LocalStoragePageConfigurator;
+import com.jwebmp.plugins.security.localstorage.implementations.*;
 
 module com.jwebmp.plugins.security.localstorage {
 
