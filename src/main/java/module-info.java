@@ -8,7 +8,7 @@ module com.jwebmp.plugins.security.localstorage {
     requires com.jwebmp.client;
     requires com.jwebmp.core;
 
-    requires guiced.vertx.sockets;
+    requires com.guicedee.vertx.sockets;
 
     requires static lombok;
 
