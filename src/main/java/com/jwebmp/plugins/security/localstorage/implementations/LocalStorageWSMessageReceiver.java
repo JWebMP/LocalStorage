@@ -5,7 +5,7 @@ import com.guicedee.guicedservlets.websockets.options.CallScopeProperties;
 import com.guicedee.guicedservlets.websockets.options.IGuicedWebSocket;
 import com.guicedee.guicedservlets.websockets.options.WebSocketMessageReceiver;
 import com.guicedee.guicedservlets.websockets.services.IWebSocketMessageReceiver;
-import com.guicedee.vertx.websockets.GuicedWebSocket;
+
 import com.jwebmp.core.base.ajax.AjaxResponse;
 import lombok.extern.java.Log;
 
@@ -48,7 +48,7 @@ public class LocalStorageWSMessageReceiver
         try
         {
             //Session session = messageReceiver.getSession();
-            GuicedWebSocket socket = (GuicedWebSocket) IGuiceContext.get(IGuicedWebSocket.class);
+            IGuicedWebSocket socket = IGuiceContext.get(IGuicedWebSocket.class);
             Map<String, Object> map = messageReceiver.getData();
             boolean found = false;
             CallScopeProperties callScopeProperties = IGuiceContext.get(CallScopeProperties.class);
@@ -59,31 +59,30 @@ public class LocalStorageWSMessageReceiver
                 {
                     found = true;
                     String sessionKey = localStorage.get(LOCAL_STORAGE_PARAMETER_KEY)
-                                                    .toString();
+                            .toString();
                     LocalStorageWSMessageReceiver.log.log(Level.FINER, "Web socket local storage - " + LOCAL_STORAGE_PARAMETER_KEY);
                     messageReceiver.setBroadcastGroup(sessionKey);
                     callScopeProperties.getProperties()
-                                       .put(LOCAL_STORAGE_PARAMETER_KEY, sessionKey);
+                            .put(LOCAL_STORAGE_PARAMETER_KEY, sessionKey);
                     socket.addToGroup(sessionKey);
                 }
             }
             if (!found)
             {
                 String sessionUUID = UUID.randomUUID()
-                                         .toString();
+                        .toString();
                 AjaxResponse<?> newKey = new AjaxResponse<>();
                 newKey.getLocalStorage()
-                      .put(LOCAL_STORAGE_PARAMETER_KEY, sessionUUID);
+                        .put(LOCAL_STORAGE_PARAMETER_KEY, sessionUUID);
                 //   newKey.preConfigure();
                 callScopeProperties.getProperties()
-                                   .put(LOCAL_STORAGE_PARAMETER_KEY, sessionUUID);
+                        .put(LOCAL_STORAGE_PARAMETER_KEY, sessionUUID);
                 socket.addToGroup(sessionUUID);
                 socket.broadcastMessage(sessionUUID, newKey.toString());
                 messageReceiver.setBroadcastGroup(sessionUUID);
             }
 
-        }
-        catch (Exception e)
+        } catch (Exception e)
         {
             LocalStorageWSMessageReceiver.log.log(Level.WARNING, "Unable to check for local storage key", e);
         }
@@ -91,7 +90,7 @@ public class LocalStorageWSMessageReceiver
 
 
     //@Override
-    public void onError(Throwable t, GuicedWebSocket socket)
+    public void onError(Throwable t, IGuicedWebSocket socket)
     {
 
     }
