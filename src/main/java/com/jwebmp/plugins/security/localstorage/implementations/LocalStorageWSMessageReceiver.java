@@ -1,7 +1,7 @@
 package com.jwebmp.plugins.security.localstorage.implementations;
 
 import com.guicedee.client.IGuiceContext;
-import com.guicedee.guicedservlets.websockets.options.CallScopeProperties;
+import com.guicedee.client.CallScopeProperties;
 import com.guicedee.guicedservlets.websockets.options.IGuicedWebSocket;
 import com.guicedee.guicedservlets.websockets.options.WebSocketMessageReceiver;
 import com.guicedee.guicedservlets.websockets.services.IWebSocketMessageReceiver;
@@ -59,30 +59,31 @@ public class LocalStorageWSMessageReceiver
                 {
                     found = true;
                     String sessionKey = localStorage.get(LOCAL_STORAGE_PARAMETER_KEY)
-                            .toString();
+                                                    .toString();
                     LocalStorageWSMessageReceiver.log.log(Level.FINER, "Web socket local storage - " + LOCAL_STORAGE_PARAMETER_KEY);
                     messageReceiver.setBroadcastGroup(sessionKey);
                     callScopeProperties.getProperties()
-                            .put(LOCAL_STORAGE_PARAMETER_KEY, sessionKey);
+                                       .put(LOCAL_STORAGE_PARAMETER_KEY, sessionKey);
                     socket.addToGroup(sessionKey);
                 }
             }
             if (!found)
             {
                 String sessionUUID = UUID.randomUUID()
-                        .toString();
+                                         .toString();
                 AjaxResponse<?> newKey = new AjaxResponse<>();
                 newKey.getLocalStorage()
-                        .put(LOCAL_STORAGE_PARAMETER_KEY, sessionUUID);
+                      .put(LOCAL_STORAGE_PARAMETER_KEY, sessionUUID);
                 //   newKey.preConfigure();
                 callScopeProperties.getProperties()
-                        .put(LOCAL_STORAGE_PARAMETER_KEY, sessionUUID);
+                                   .put(LOCAL_STORAGE_PARAMETER_KEY, sessionUUID);
                 socket.addToGroup(sessionUUID);
                 socket.broadcastMessage(sessionUUID, newKey.toString());
                 messageReceiver.setBroadcastGroup(sessionUUID);
             }
 
-        } catch (Exception e)
+        }
+        catch (Exception e)
         {
             LocalStorageWSMessageReceiver.log.log(Level.WARNING, "Unable to check for local storage key", e);
         }
