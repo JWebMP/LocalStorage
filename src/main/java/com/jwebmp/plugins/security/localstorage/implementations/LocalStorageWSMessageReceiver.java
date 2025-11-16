@@ -19,7 +19,7 @@ import static com.jwebmp.interception.services.StaticStrings.LOCAL_STORAGE_PARAM
 
 @Log
 public class LocalStorageWSMessageReceiver
-        implements IWebSocketMessageReceiver
+        implements IWebSocketMessageReceiver<Void, LocalStorageWSMessageReceiver>
 {
     private static boolean enabled = true;
 
