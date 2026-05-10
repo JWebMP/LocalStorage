@@ -2,8 +2,8 @@ package com.jwebmp.plugins.security.localstorage.implementations;
 
 import com.google.inject.Provider;
 import com.guicedee.client.IGuiceContext;
-import com.guicedee.client.CallScopeProperties;
-import com.guicedee.client.CallScopeSource;
+import com.guicedee.client.scopes.CallScopeProperties;
+import com.guicedee.client.scopes.CallScopeSource;
 import com.jwebmp.core.base.ajax.AjaxCall;
 
 import java.util.UUID;

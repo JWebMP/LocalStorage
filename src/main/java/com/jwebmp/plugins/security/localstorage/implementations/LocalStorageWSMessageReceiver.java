@@ -1,10 +1,10 @@
 package com.jwebmp.plugins.security.localstorage.implementations;
 
 import com.guicedee.client.IGuiceContext;
-import com.guicedee.client.CallScopeProperties;
-import com.guicedee.guicedservlets.websockets.options.IGuicedWebSocket;
-import com.guicedee.guicedservlets.websockets.options.WebSocketMessageReceiver;
-import com.guicedee.guicedservlets.websockets.services.IWebSocketMessageReceiver;
+import com.guicedee.client.scopes.CallScopeProperties;
+import com.guicedee.client.services.websocket.IGuicedWebSocket;
+import com.guicedee.client.services.websocket.WebSocketMessageReceiver;
+import com.guicedee.client.services.websocket.IWebSocketMessageReceiver;
 import io.smallrye.mutiny.Uni;
 import com.jwebmp.core.base.ajax.AjaxResponse;
 import lombok.extern.java.Log;

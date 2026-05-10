@@ -1,7 +1,7 @@
 package com.jwebmp.plugins.security.localstorage.implementations;
 
 import com.guicedee.client.IGuiceContext;
-import com.guicedee.client.CallScopeProperties;
+import com.guicedee.client.scopes.CallScopeProperties;
 import com.jwebmp.core.base.ajax.AjaxCall;
 import com.jwebmp.core.base.ajax.AjaxResponse;
 import com.jwebmp.interception.services.AjaxCallIntercepter;
