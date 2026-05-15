@@ -5,20 +5,21 @@
     <parent>
         <groupId>com.jwebmp</groupId>
         <artifactId>parent</artifactId>
-        <version>2.0.0-SNAPSHOT</version>
+        <version>2.0.2</version>
     </parent>
 
     <groupId>com.jwebmp.plugins</groupId>
     <artifactId>localstorage</artifactId>
     <packaging>jar</packaging>
-    <version>2.0.0-SNAPSHOT</version>
+    <version>2.0.2</version>
     <name>Local Storage Security</name>
     <description>This plugin creates and transports variables containing local storage information.
         It also creates unique identifier in the local storage for device identification.
     </description>
+    <url>https://github.com/JWebMP/LocalStorage</url>
     <issueManagement>
         <system>Github</system>
-        <url>https://github.com/JWebMP/LocalStorage/issues</url>
+        <url>https://github.com/JWebMP/LocalStorage</url>
     </issueManagement>
     <dependencies>
         <dependency>
@@ -42,7 +43,7 @@
 
     <properties>
         <ignore.moditect>true</ignore.moditect>
-        <project.scm.nameUrl>/JWebMP/Plugins/LocalStorage</project.scm.nameUrl>
+        <project.scm.nameUrl>/JWebMP/LocalStorage</project.scm.nameUrl>
     </properties>
 
     <build>
@@ -50,6 +51,10 @@
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>flatten-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>com.coderplus.maven.plugins</groupId>
+                <artifactId>copy-rename-maven-plugin</artifactId>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
